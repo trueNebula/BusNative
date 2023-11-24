@@ -25,12 +25,12 @@ function UpdateBusScreen(): JSX.Element {
     );
 }
 
-UpdateBusScreen.options = {
-    topBar: {
-        title: {
-            text: 'Update Bus',
-        },
-    },
-};
+// UpdateBusScreen.options = {
+//     topBar: {
+//         title: {
+//             text: 'Update Bus',
+//         },
+//     },
+// };
 
 export default UpdateBusScreen;

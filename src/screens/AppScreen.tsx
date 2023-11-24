@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import {
     Button,
+    FlatList,
     SafeAreaView,
     ScrollView,
     StatusBar,
@@ -45,9 +46,10 @@ function Section({ children, title }: SectionProps): JSX.Element {
     );
 }
 
-function AppScreen(props: any): JSX.Element {
+function AppScreen({ navigation }: any): JSX.Element {
     const { count, increment, decrement } = useContext(AppContext);
-
+    const { list } = useContext(AppContext);
+    const [refresh, setRefresh] = useState(false);
     const isDarkMode = useColorScheme() === 'dark';
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -72,24 +74,12 @@ function AppScreen(props: any): JSX.Element {
                         <Button
                             title="lmao"
                             color="#2345AA"
-                            onPress={() =>
-                                Navigation.push(props.componentId, {
-                                    component: {
-                                        name: 'AddBusScreen',
-                                    },
-                                })
-                            }
+                            onPress={() => navigation.navigate('Add Bus')}
                         />
                         <Button
                             title="lmao 2 the sequeling"
                             color="#2345AA"
-                            onPress={() =>
-                                Navigation.push(props.componentId, {
-                                    component: {
-                                        name: 'UpdateBusScreen',
-                                    },
-                                })
-                            }
+                            onPress={() => navigation.navigate('Update Bus')}
                         />
                     </Section>
                     <Section title="counter test lmao">
@@ -103,13 +93,13 @@ function AppScreen(props: any): JSX.Element {
     );
 }
 
-AppScreen.options = {
-    topBar: {
-        title: {
-            text: 'Home',
-        },
-    },
-};
+// AppScreen.options = {
+//     topBar: {
+//         title: {
+//             text: 'Home',
+//         },
+//     },
+// };
 
 const styles = StyleSheet.create({
     sectionContainer: {

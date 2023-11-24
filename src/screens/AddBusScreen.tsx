@@ -18,12 +18,12 @@ function AddBusScreen(): JSX.Element {
     );
 }
 
-AddBusScreen.options = {
-    topBar: {
-        title: {
-            text: 'Add Bus',
-        },
-    },
-};
+// AddBusScreen.options = {
+//     topBar: {
+//         title: {
+//             text: 'Add Bus',
+//         },
+//     },
+// };
 
 export default AddBusScreen;
