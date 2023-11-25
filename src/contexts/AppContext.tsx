@@ -2,7 +2,7 @@ import React from 'react';
 import { Repository } from '../model/repository';
 
 const initialListState = {
-    list: new Repository(),
+    repository: new Repository(),
     count: 0,
 };
 
@@ -15,7 +15,7 @@ const appContextWrapper = (component?: React.Component) => ({
         dateAdded: String,
         dateSpotted: String,
     ) => {
-        initialListState.list.addBusRaw(
+        initialListState.repository.addBusRaw(
             name,
             description,
             spotted,
@@ -32,7 +32,7 @@ const appContextWrapper = (component?: React.Component) => ({
         dateAdded: String,
         dateSpotted: String,
     ) => {
-        initialListState.list.updateBus(
+        initialListState.repository.updateBus(
             id,
             name,
             description,
@@ -42,8 +42,8 @@ const appContextWrapper = (component?: React.Component) => ({
         );
         component?.setState({ context: appContextWrapper(component) });
     },
-    delete: (id: Number) => {
-        initialListState.list.deleteBus(id);
+    remove: (id: Number) => {
+        initialListState.repository.deleteBus(id);
         component?.setState({ context: appContextWrapper(component) });
     },
     increment: () => {

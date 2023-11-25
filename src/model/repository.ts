@@ -9,15 +9,19 @@ export class Repository {
 
     getLastId = () => {
         console.log(`Size: ${this.repository.length}`);
-        return this.repository.length;
+        let id = -1;
+        this.repository.forEach(bus => {
+            id = Math.max(id, bus.id);
+        });
+        return id + 1;
     };
 
     addBusRaw = (
-        name: String,
-        description: String,
-        spotted: Boolean,
-        dateAdded: String,
-        dateSpotted: String,
+        name: string,
+        description: string,
+        spotted: boolean,
+        dateAdded: string,
+        dateSpotted: string,
     ) => {
         const id = this.getLastId();
         const newBus: Bus = {
@@ -33,12 +37,12 @@ export class Repository {
     };
 
     updateBus = (
-        id: Number,
-        name: String,
-        description: String,
-        spotted: Boolean,
-        dateAdded: String,
-        dateSpotted: String,
+        id: number,
+        name: string,
+        description: string,
+        spotted: boolean,
+        dateAdded: string,
+        dateSpotted: string,
     ) => {
         this.repository.forEach(bus => {
             if (bus.id === id) {
@@ -52,6 +56,18 @@ export class Repository {
     };
 
     deleteBus = (id: Number) => {
-        this.repository.filter(bus => bus.id !== id);
+        this.repository = this.repository.filter(bus => bus.id !== id);
+    };
+
+    get = () => this.repository;
+
+    getById = (id: number) => {
+        let result = {} as Bus;
+        this.repository.forEach(bus => {
+            if (bus.id === id) {
+                result = bus;
+            }
+        });
+        return result;
     };
 }

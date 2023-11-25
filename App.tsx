@@ -19,11 +19,44 @@ function App(): JSX.Element {
         <AppContextProvider>
             <NavigationContainer>
                 <Stack.Navigator>
-                    <Stack.Screen name="Home" component={AppScreen} />
-                    <Stack.Screen name="Add Bus" component={AddBusScreen} />
+                    <Stack.Screen
+                        name="Home"
+                        component={AppScreen}
+                        options={{
+                            headerStyle: {
+                                backgroundColor: '#07CF85',
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                                fontWeight: 'bold',
+                            },
+                        }}
+                    />
+                    <Stack.Screen
+                        name="Add Bus"
+                        component={AddBusScreen}
+                        options={{
+                            headerStyle: {
+                                backgroundColor: '#07CF85',
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                                fontWeight: 'bold',
+                            },
+                        }}
+                    />
                     <Stack.Screen
                         name="Update Bus"
                         component={UpdateBusScreen}
+                        options={{
+                            headerStyle: {
+                                backgroundColor: '#07CF85',
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                                fontWeight: 'bold',
+                            },
+                        }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

@@ -1,8 +1,8 @@
 export interface Bus {
-    id: Number;
-    name: String;
-    description: String;
-    spotted: Boolean;
-    dateAdded: String;
-    dateSpotted: String;
+    id: number;
+    name: string;
+    description: string;
+    spotted: boolean;
+    dateAdded: string;
+    dateSpotted: string;
 }

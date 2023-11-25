@@ -1,12 +1,23 @@
 import { StyleSheet } from 'react-native';
 
-const colors = StyleSheet.create({
-    textBlack: { backgroundColor: 'FF130E01' },
-    background: { backgroundColor: 'FFEBFFFD' },
-    greenMain: { backgroundColor: 'FF00FFC3' },
-    greenAlt: { backgroundColor: 'FFD6FFDD' },
-    greenAccent: { backgroundColor: 'FF07CF85' },
-    greenContainer: { backgroundColor: '3307CF85' },
-    dialogContainer: { backgroundColor: 'FFE6FFF6' },
-    inputText: { backgroundColor: 'AE130E01' },
+export const backgroundColors = StyleSheet.create({
+    textBlack: { backgroundColor: '#130E01' },
+    background: { backgroundColor: '#EBFFFD' },
+    greenMain: { backgroundColor: '#00FFC3' },
+    greenAlt: { backgroundColor: '#D6FFDD' },
+    greenAccent: { backgroundColor: '#07CF85' },
+    greenContainer: { backgroundColor: '#07CF8533' },
+    dialogContainer: { backgroundColor: '#E6FFF6' },
+    inputText: { backgroundColor: '#130E01AE' },
 });
+
+export const colors = {
+    textBlack: '#130E01',
+    background: '#EBFFFD',
+    greenMain: '#00FFC3',
+    greenAlt: '#D6FFDD',
+    greenAccent: '#07CF85',
+    greenContainer: '#07CF8533',
+    dialogContainer: '#E6FFF6',
+    inputText: '#130E01AE',
+};
