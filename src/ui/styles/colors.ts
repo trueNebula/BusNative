@@ -21,3 +21,9 @@ export const colors = {
     dialogContainer: '#E6FFF6',
     inputText: '#130E01AE',
 };
+
+export const globalStyles = StyleSheet.create({
+    input: {
+        color: '#130E01',
+    },
+});

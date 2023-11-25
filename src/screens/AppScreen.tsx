@@ -30,7 +30,7 @@ function AppScreen({ navigation }: any): JSX.Element {
             <View>
                 <Button
                     title="Add Bus"
-                    color="#2345AA"
+                    color={colors.greenAccent}
                     onPress={() => navigation.navigate('Add Bus')}
                 />
             </View>

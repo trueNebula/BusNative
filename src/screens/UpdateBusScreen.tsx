@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Button, SafeAreaView, Switch, TextInput } from 'react-native';
+import { Button, SafeAreaView, Switch, Text, TextInput } from 'react-native';
 
 import { AppContext } from '../contexts/AppContext';
-import { backgroundColors } from '../ui/styles/colors';
+import { backgroundColors, globalStyles } from '../ui/styles/colors';
 
 const handleOnPress = (
     callback: any,
@@ -23,7 +23,6 @@ function UpdateBusScreen({ route, navigation }: any): JSX.Element {
     const { repository, update } = useContext(AppContext);
     const { id } = route.params;
     const bus = repository.getById(id);
-    console.log(bus)
     const [name, setName] = useState(bus?.name || '');
     const [description, setDescription] = useState(bus?.description || '');
     const [spotted, setSpotted] = useState(bus?.spotted || false);
@@ -35,18 +34,29 @@ function UpdateBusScreen({ route, navigation }: any): JSX.Element {
     return (
         <SafeAreaView style={backgroundColors.background}>
             <TextInput
+                style={globalStyles.input}
                 onChangeText={setName}
                 value={name}
                 placeholder="Bus Name..."
             />
             <TextInput
+                style={globalStyles.input}
                 onChangeText={setDescription}
                 value={description}
                 placeholder="Bus Description..."
             />
+            <Text style={globalStyles.input}>Spotted?</Text>
             <Switch onValueChange={setSpotted} value={spotted} />
-            <TextInput onChangeText={setDateSpotted} value={dateSpotted} />
-            <TextInput onChangeText={setDateAdded} value={dateAdded} />
+            <TextInput
+                style={globalStyles.input}
+                onChangeText={setDateSpotted}
+                value={dateSpotted}
+            />
+            <TextInput
+                style={globalStyles.input}
+                onChangeText={setDateAdded}
+                value={dateAdded}
+            />
             <Button
                 title="Update Bus"
                 onPress={() =>

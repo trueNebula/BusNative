@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { SafeAreaView, Button, TextInput, Switch } from 'react-native';
+import { SafeAreaView, Button, TextInput, Switch, Text } from 'react-native';
 
-import { backgroundColors } from '../ui/styles/colors';
+import { backgroundColors, colors, globalStyles } from '../ui/styles/colors';
 import { AppContext } from '../contexts/AppContext';
 
 const handleOnPress = (
@@ -29,18 +29,31 @@ function AddBusScreen({ navigation }: any): JSX.Element {
     return (
         <SafeAreaView style={backgroundColors.background}>
             <TextInput
+                style={globalStyles.input}
+                placeholderTextColor={colors.textBlack}
                 onChangeText={setName}
                 value={name}
                 placeholder="Bus Name..."
             />
             <TextInput
+                style={globalStyles.input}
+                placeholderTextColor={colors.textBlack}
                 onChangeText={setDescription}
                 value={description}
                 placeholder="Bus Description..."
             />
+            <Text style={globalStyles.input}>Spotted?</Text>
             <Switch onValueChange={setSpotted} value={spotted} />
-            <TextInput onChangeText={setDateSpotted} value={dateSpotted} />
-            <TextInput onChangeText={setDateAdded} value={dateAdded} />
+            <TextInput
+                style={globalStyles.input}
+                onChangeText={setDateSpotted}
+                value={dateSpotted}
+            />
+            <TextInput
+                style={globalStyles.input}
+                onChangeText={setDateAdded}
+                value={dateAdded}
+            />
             <Button
                 title="Add Bus"
                 onPress={() =>

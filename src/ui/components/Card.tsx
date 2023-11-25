@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Button, Text, View } from 'react-native';
 import { Bus } from '../../model/bus';
-import { colors } from '../styles/colors';
+import { colors, globalStyles } from '../styles/colors';
 
 interface CardProps {
     bus: Bus;
@@ -32,11 +32,13 @@ function Card({ bus, updateCallback, deleteCallback }: CardProps) {
     return (
         <View>
             <View>
-                <Text>{bus.name}</Text>
-                <Text>{bus.description}</Text>
-                <Text>{bus.spotted ? 'Spotted' : 'Not Spotted'}</Text>
-                <Text>{bus.dateSpotted}</Text>
-                <Text>{bus.dateAdded}</Text>
+                <Text style={globalStyles.input}>{bus.name}</Text>
+                <Text style={globalStyles.input}>{bus.description}</Text>
+                <Text style={globalStyles.input}>
+                    {bus.spotted ? 'Spotted' : 'Not Spotted'}
+                </Text>
+                <Text style={globalStyles.input}>{bus.dateSpotted}</Text>
+                <Text style={globalStyles.input}>{bus.dateAdded}</Text>
             </View>
             <View>
                 <Button
