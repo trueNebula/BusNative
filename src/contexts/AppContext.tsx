@@ -3,17 +3,20 @@ import { Repository } from '../model/repository';
 
 const initialListState = {
     repository: new Repository(),
-    count: 0,
 };
 
 const appContextWrapper = (component?: React.Component) => ({
     ...initialListState,
+    get: async () => {
+        await initialListState.repository.getFromDB();
+        component?.setState({ context: appContextWrapper(component) });
+    },
     add: (
-        name: String,
-        description: String,
-        spotted: Boolean,
-        dateAdded: String,
-        dateSpotted: String,
+        name: string,
+        description: string,
+        spotted: boolean,
+        dateAdded: string,
+        dateSpotted: string,
     ) => {
         initialListState.repository.addBusRaw(
             name,
@@ -25,12 +28,12 @@ const appContextWrapper = (component?: React.Component) => ({
         component?.setState({ context: appContextWrapper(component) });
     },
     update: (
-        id: Number,
-        name: String,
-        description: String,
-        spotted: Boolean,
-        dateAdded: String,
-        dateSpotted: String,
+        id: number,
+        name: string,
+        description: string,
+        spotted: boolean,
+        dateAdded: string,
+        dateSpotted: string,
     ) => {
         initialListState.repository.updateBus(
             id,
@@ -42,16 +45,8 @@ const appContextWrapper = (component?: React.Component) => ({
         );
         component?.setState({ context: appContextWrapper(component) });
     },
-    remove: (id: Number) => {
+    remove: (id: number) => {
         initialListState.repository.deleteBus(id);
-        component?.setState({ context: appContextWrapper(component) });
-    },
-    increment: () => {
-        initialListState.count += 1;
-        component?.setState({ context: appContextWrapper(component) });
-    },
-    decrement: () => {
-        initialListState.count -= 1;
         component?.setState({ context: appContextWrapper(component) });
     },
 });

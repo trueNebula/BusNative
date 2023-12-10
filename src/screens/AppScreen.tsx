@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback, useEffect } from 'react';
 import { Button, FlatList, SafeAreaView, StatusBar, View } from 'react-native';
 
 import { AppContext } from '../contexts/AppContext';
@@ -6,20 +6,23 @@ import { backgroundColors, colors } from '../ui/styles/colors';
 import Card from '../ui/components/Card';
 
 function AppScreen({ navigation }: any): JSX.Element {
-    const { repository, remove } = useContext(AppContext);
+    const { repository, get, remove } = useContext(AppContext);
 
     const navigateToUpdateForId = (id: Number) => {
         navigation.navigate('Update Bus', { id });
     };
 
-    React.useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            // console.log(repository.get());
-        });
-
-        // Return the function to unsubscribe from the event so it gets removed on unmount
-        return unsubscribe;
-    }, [navigation]);
+    const loadDataCallback = useCallback(async () => {
+        try {
+            await get();
+        } catch (error) {
+            console.error(error);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    useEffect(() => {
+        loadDataCallback();
+    }, [loadDataCallback]);
 
     return (
         <SafeAreaView style={backgroundColors.background}>

@@ -32,13 +32,15 @@ function Card({ bus, updateCallback, deleteCallback }: CardProps) {
     return (
         <View>
             <View>
-                <Text style={globalStyles.input}>{bus.name}</Text>
-                <Text style={globalStyles.input}>{bus.description}</Text>
+                <Text style={globalStyles.input}>Name: {bus.name}</Text>
+                <Text style={globalStyles.input}>
+                    Description: {bus.description}
+                </Text>
                 <Text style={globalStyles.input}>
                     {bus.spotted ? 'Spotted' : 'Not Spotted'}
                 </Text>
-                <Text style={globalStyles.input}>{bus.dateSpotted}</Text>
-                <Text style={globalStyles.input}>{bus.dateAdded}</Text>
+                <Text style={globalStyles.input}>on: {bus.dateSpotted}</Text>
+                <Text style={globalStyles.input}>Added: {bus.dateAdded}</Text>
             </View>
             <View>
                 <Button

@@ -1,8 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Button, SafeAreaView, Switch, Text, TextInput } from 'react-native';
+import {
+    Button,
+    SafeAreaView,
+    Switch,
+    Text,
+    TextInput,
+    View,
+} from 'react-native';
 
 import { AppContext } from '../contexts/AppContext';
-import { backgroundColors, globalStyles } from '../ui/styles/colors';
+import { backgroundColors, colors, globalStyles } from '../ui/styles/colors';
 
 const handleOnPress = (
     callback: any,
@@ -33,30 +40,46 @@ function UpdateBusScreen({ route, navigation }: any): JSX.Element {
 
     return (
         <SafeAreaView style={backgroundColors.background}>
-            <TextInput
-                style={globalStyles.input}
-                onChangeText={setName}
-                value={name}
-                placeholder="Bus Name..."
-            />
-            <TextInput
-                style={globalStyles.input}
-                onChangeText={setDescription}
-                value={description}
-                placeholder="Bus Description..."
-            />
-            <Text style={globalStyles.input}>Spotted?</Text>
-            <Switch onValueChange={setSpotted} value={spotted} />
-            <TextInput
-                style={globalStyles.input}
-                onChangeText={setDateSpotted}
-                value={dateSpotted}
-            />
-            <TextInput
-                style={globalStyles.input}
-                onChangeText={setDateAdded}
-                value={dateAdded}
-            />
+            <View>
+                <Text style={globalStyles.input}>Name</Text>
+                <TextInput
+                    style={globalStyles.input}
+                    placeholderTextColor={colors.textBlack}
+                    onChangeText={setName}
+                    value={name}
+                    placeholder="Bus Name..."
+                />
+            </View>
+            <View>
+                <Text style={globalStyles.input}>Description</Text>
+                <TextInput
+                    style={globalStyles.input}
+                    placeholderTextColor={colors.textBlack}
+                    onChangeText={setDescription}
+                    value={description}
+                    placeholder="Bus Description..."
+                />
+            </View>
+            <View>
+                <Text style={globalStyles.input}>Spotted?</Text>
+                <Switch onValueChange={setSpotted} value={spotted} />
+            </View>
+            <View>
+                <Text style={globalStyles.input}>Date Spotted</Text>
+                <TextInput
+                    style={globalStyles.input}
+                    onChangeText={setDateSpotted}
+                    value={dateSpotted}
+                />
+            </View>
+            <View>
+                <Text style={globalStyles.input}>Date Added</Text>
+                <TextInput
+                    style={globalStyles.input}
+                    onChangeText={setDateAdded}
+                    value={dateAdded}
+                />
+            </View>
             <Button
                 title="Update Bus"
                 onPress={() =>
